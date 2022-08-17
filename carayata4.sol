@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.8.0;
+pragma solidity 0.8.16;
 
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
@@ -31,7 +31,7 @@ contract SchrowRecatored is Ownable, ReentrancyGuard{
     }
 
     // Read ernest
-    function getErnest() view public onlyOwner isPaused returns (bytes32){
+    function getErnest() public view onlyOwner isPaused returns (bytes32){
         return _ernest;
     }
 
@@ -49,7 +49,7 @@ contract SchrowRecatored is Ownable, ReentrancyGuard{
     }
 
     //compare ernest
-    function checkSecretKey(string memory _existingSecret) view public onlyOwner returns (bool){
+    function checkSecretKey(string memory _existingSecret) public view onlyOwner returns (bool){
         
         if(keccak256(abi.encodePacked(_existingSecret)) ==  _ernest){
             return true;
