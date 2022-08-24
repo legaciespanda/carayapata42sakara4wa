@@ -1,0 +1,50 @@
+Reentrancy in SchrowRecatored.endContract(string,uint256,string) (carayata4.sol#144-154):
+	External calls:
+	- address(msg.sender).transfer(_price) (carayata4.sol#150)
+	State variables written after the call(s):
+	- delete Items[_paymentPhrase] (carayata4.sol#153)
+	
+Reentrancy in SchrowRecatored.revokeContract(string,uint256,string) (carayata4.sol#158-166):
+	External calls:
+	- address(msg.sender).transfer(_price) (carayata4.sol#162)
+	State variables written after the call(s):
+	- delete Items[_paymentPhrase] (carayata4.sol#164)
+	
+	
+SchrowRecatored.endContract(string,uint256,string) (carayata4.sol#144-154) compares to a boolean constant:
+	-require(bool,string)(Items[_paymentPhrase].lock == false,Crypto Eskrow: You can't revoke this escrow contract. It has been locked) (carayata4.sol#146)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#boolean-equality
+
+
+
+
+getErnest() should be declared external:
+	- SchrowRecatored.getErnest() (carayata4.sol#32-34)
+setSecret(string,string) should be declared external:
+	- SchrowRecatored.setSecret(string,string) (carayata4.sol#37-40)
+hash(string) should be declared external:
+	- SchrowRecatored.hash(string) (carayata4.sol#42-47)
+checkSecretKey(string) should be declared external:
+	- SchrowRecatored.checkSecretKey(string) (carayata4.sol#50-56)
+endContract(string,uint256,string) should be declared external:
+	- SchrowRecatored.endContract(string,uint256,string) (carayata4.sol#144-155)
+revokeContract(string,uint256,string) should be declared external:
+	- SchrowRecatored.revokeContract(string,uint256,string) (carayata4.sol#159-167)
+lockDeal(string,string) should be declared external:
+	- SchrowRecatored.lockDeal(string,string) (carayata4.sol#169-172)
+unlockDeal(string,string) should be declared external:
+	- SchrowRecatored.unlockDeal(string,string) (carayata4.sol#174-177)
+getEscrowData(string) should be declared external:
+	- SchrowRecatored.getEscrowData(string) (carayata4.sol#184-195)
+getAmountByPhrase(string,string) should be declared external:
+	- SchrowRecatored.getAmountByPhrase(string,string) (carayata4.sol#198-201)
+isEscrowLocked(string,string) should be declared external:
+	- SchrowRecatored.isEscrowLocked(string,string) (carayata4.sol#204-207)
+withdraw(uint256,string) should be declared external:
+	- SchrowRecatored.withdraw(uint256,string) (carayata4.sol#211-218)
+checkBalance(string) should be declared external:
+	- SchrowRecatored.checkBalance(string) (carayata4.sol#221-225)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external
+
+
+
